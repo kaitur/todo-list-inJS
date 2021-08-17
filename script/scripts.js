@@ -15,7 +15,7 @@ let taskList = [
     new Tasks('Получить первый госзакз', '', '', false),
     new Tasks('Сменить бизнес модель', '', '', true),
     new Tasks('Попасть в список Forbes', '', '1993.03.15', true),
-    new Tasks('Поужинать в компании Джеффа Безоса', 'Здесь какое-то описание', '1981.07.05', true)
+    new Tasks('Поужинать в компании Джеффа Безоса', 'Здесь какое-то описание', '1981.07.05', false),
 ];
 
 
@@ -32,9 +32,10 @@ function addTask(task) {
         `<p class="task__text">
             ${task.description}
         </p>` +
-        `<p class="task__text">
+        `<p class="task__date${OverDueDate(task.dueDate, task.done)}">
             ${task.dueDate}
         </p>` +
+        `<input class = "task__check" type="checkbox" ${isCheck(task.done)}>` +
         '<button class="task__toggle">' +
         '<i class="fas fa-chevron-down"></i>' +
         '<i class="fas fa-times"></i>' +
@@ -46,6 +47,16 @@ function addTask(task) {
 function isComplete(done) {
     return done ? '__complete' : '';
 }
+function isCheck(done) {
+    return done ? 'checked' : '';
+}
+
+function OverDueDate(dueDate, done) {
+    let date = new Date(dueDate);
+    let now = new Date();
+    return date < now && !done ? '__over' : '';
+}
+
 taskList.forEach(addTask);
 
 const toggles = document.querySelectorAll('.task__toggle')
