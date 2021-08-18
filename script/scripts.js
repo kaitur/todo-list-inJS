@@ -1,6 +1,6 @@
 class Tasks {
-    constructor(title_, description_, dueDate_, done_) {
-        // this.taskId = taskId_;
+    constructor(taskId_, title_, description_, dueDate_, done_) {
+        this.taskId = taskId_;
         this.title = title_;
         this.description = description_;
         this.dueDate = dueDate_;
@@ -9,13 +9,13 @@ class Tasks {
 }
 
 let taskList = [
-    new Tasks('Научиться спать не более 5 часов в сутки', 'Здесь какое-то описание', '2024.05.10', true),
-    new Tasks('Начать ходить к психотерапевту', 'Здесь какое-то описание', '2047.11.05', false),
-    new Tasks('Увидеть вживую Илона Маска', 'Здесь какое-то описание', '', false),
-    new Tasks('Получить первый госзакз', '', '', false),
-    new Tasks('Сменить бизнес модель', '', '', true),
-    new Tasks('Попасть в список Forbes', '', '1993.03.15', true),
-    new Tasks('Поужинать в компании Джеффа Безоса', 'Здесь какое-то описание', '1981.07.05', false),
+    new Tasks('0', 'Научиться спать не более 5 часов в сутки', 'Здесь какое-то описание', '2024.05.10', true),
+    new Tasks('1', 'Начать ходить к психотерапевту', 'Здесь какое-то описание', '2047.11.05', false),
+    new Tasks('2', 'Увидеть вживую Илона Маска', 'Здесь какое-то описание', '', false),
+    new Tasks('3', 'Получить первый госзакз', '', '', false),
+    new Tasks('4', 'Сменить бизнес модель', '', '', true),
+    new Tasks('5', 'Попасть в список Forbes', '', '1993.03.15', true),
+    new Tasks('6', 'Поужинать в компании Джеффа Безоса', 'Здесь какое-то описание', '1981.07.05', false),
 ];
 
 
@@ -23,7 +23,7 @@ let taskList = [
 const listItem = document.getElementById('taskList');
 function addTask(task) {
     listItem.innerHTML +=
-        `<div class="tasks-container" onclick="console.log('нажал', this)">` +
+        `<div class="tasks-container">` +
         '<div class="task">' +
         `<h3 class="task__title${isComplete(task.done)}">
             ${task.title}
