@@ -22,9 +22,8 @@ let taskList = [
 
 const listItem = document.getElementById('taskList');
 function addTask(task) {
-    // listItem.innerHTML += `<div>${task.title}</div>`
     listItem.innerHTML +=
-        '<div class="tasks-container">' +
+        `<div class="tasks-container" onclick="console.log('нажал', this)">` +
         '<div class="task">' +
         `<h3 class="task__title${isComplete(task.done)}">
             ${task.title}
